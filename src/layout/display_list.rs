@@ -33,6 +33,11 @@ impl<'a> DisplayListBuilder<'a> {
 impl BoxFragment {
     pub fn build_display_list(&self, builder: &mut DisplayListBuilder, containing_block: Rect<Au>) {
         // FIXME: build for margins.
+        let containing_block = Rect {
+            origin: containing_block.origin + self.rect.origin,
+            size: self.rect.size
+        };
+
         for fragment in &self.children {
             match fragment {
                 Fragment::Text(text_fragment) => {

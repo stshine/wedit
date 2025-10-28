@@ -17,12 +17,9 @@ use winit::event_loop::EventLoop;
 
 use crate::app::App;
 
-const WIDTH: f32 = 1024.0;
-const HEIGHT: f32 = 768.0;
-
 fn main() {
     let event_loop = EventLoop::new().unwrap();
     let mut app = App::new();
 
-    event_loop.run_app(&mut app);
+    event_loop.run_app(&mut app).unwrap();
 }

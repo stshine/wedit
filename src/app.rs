@@ -115,8 +115,7 @@ impl ApplicationHandler for App {
                         size: viewport_size
                     };
                     let mut dl_builder = DisplayListBuilder::new(
-                        // TODO: Remove conversion
-                        compositor.scale_factor() as f32,
+                        scale_factor,
                         *root_pipeline,
                         layout_context
                     );
