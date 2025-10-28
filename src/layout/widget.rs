@@ -1,7 +1,7 @@
 use std::collections::HashMap;
 
 use app_units::Au;
-use ttf_parser::{Weight, Style};
+use ttf_parser::{Weight, Style as FontStyle};
 use webrender_api::{FontInstanceKey, FontKey};
 
 use super::context::LayoutContext;
@@ -14,11 +14,25 @@ pub trait Widget {
 }
 
 pub struct TextStyle {
+    pub color: u32,
     pub font_family: String,
     pub font_size: f32,
     pub font_weight: Weight,
-    pub font_style: Style,
+    pub font_style: FontStyle,
     pub line_height: f32,
+}
+
+impl Default for TextStyle {
+    fn default() -> Self {
+        Self {
+            color: 0,
+            font_family: "".to_string(),
+            font_size: 16.0,
+            font_weight: Weight::Normal,
+            font_style: FontStyle::Normal,
+            line_height: 22.0
+        }
+    }
 }
 
 pub struct Text {
